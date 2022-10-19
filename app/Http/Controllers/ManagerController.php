@@ -45,7 +45,7 @@ class ManagerController extends Controller
     public function showUser(Request $request)
     {
         $user = User::find($request->id)->first();
-        return view('showUser',['user'=>$user]);
+        return view('showUser',['user'=>$user,'appointments'=> $user->appointments]);
     }
 
     public function allservices()
@@ -57,7 +57,7 @@ class ManagerController extends Controller
     {
 
         $service = Service::find($request->id);
-        return view('showService',['service'=>$service]);
+        return view('showService',['service'=>$service,'appointments'=> $service->appointments]);
     }
     public function createService(){
         return view('createService');
