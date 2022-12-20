@@ -68,6 +68,7 @@ class AppointmentController extends Controller
         $appointment->following_code = rand(1000000,9999999);
         $appointment->save();
         $appointment->addServices($request->services);
+//        $appointment->attach
         return redirect('/dashboard')->with(['message'=>'appointment created']);
     }
 

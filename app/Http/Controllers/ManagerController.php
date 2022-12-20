@@ -18,7 +18,7 @@ class ManagerController extends Controller
     {
         $users = User::all();
         foreach ($users as $user) {
-            $contribute = $user->appointments->wherebetween('date', [Carbon::now()->subMonth(3), Carbon::now()])->count();
+            $contribute = $user->appointments->wherebetween('created_at', [Carbon::now()->subMonth(3), Carbon::now()])->count();
 
             if ($contribute > 5) {
                 $user->color = 'green';

@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Rules\DateBetween;
 use App\Rules\TimeBetween;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentRequest extends FormRequest
 {
@@ -15,7 +16,8 @@ class AppointmentRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check() ? true : false;
+
     }
 
     /**
@@ -26,6 +28,8 @@ class AppointmentRequest extends FormRequest
     public function rules()
     {
         return [
+            'email'=>'max:150|min:10|',
+            'img'=>'mimes:jpg,png|'
         ];
     }
 }
